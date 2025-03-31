@@ -8,6 +8,8 @@
         body {
             text-align: center;
             font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            color: #333;
         }
         .box {
             width: 200px;
@@ -19,6 +21,23 @@
             justify-content: center;
             font-size: 20px;
             cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+        }
+        button {
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #3700b3;
         }
     </style>
 </head>
@@ -29,29 +48,20 @@
     <button onclick="changeColor()">Keisti spalvą</button>
     <button onclick="showTime()">Rodyti laiką</button>
     <button onclick="addText()">Pridėti tekstą</button>
-    <button onclick="toggleVisibility()">Rodyti/slėpti kvadratą</button>
-    <button onclick="increaseSize()">Didinti kvadratą</button>
-    <button onclick="decreaseSize()">Mažinti kvadratą</button>
-    <button onclick="rotateBox()">Sukti kvadratą</button>
-    <button onclick="resetBox()">Atstatyti kvadratą</button>
-    <button onclick="randomizePosition()">Perkelti kvadratą</button>
-    <button onclick="changeBorder()">Keisti rėmelį</button>
-    <button onclick="playSound()">Garsas</button>
-    <button onclick="changeFont()">Keisti šriftą</button>
     
-    <div class="box" id="box">Lightblue</div>
+    <div class="box" id="box">Šviesiai mėlyna</div>
     <p id="time"></p>
     <p id="customText"></p>
     
     <script>
         function changeColor() {
             const colors = [
-                { name: 'Red', hex: 'red' },
-                { name: 'Blue', hex: 'blue' },
-                { name: 'Green', hex: 'green' },
-                { name: 'Purple', hex: 'purple' },
-                { name: 'Orange', hex: 'orange' },
-                { name: 'Pink', hex: 'pink' }
+                { name: 'Raudona', hex: 'red' },
+                { name: 'Mėlyna', hex: 'blue' },
+                { name: 'Žalia', hex: 'green' },
+                { name: 'Violetinė', hex: 'purple' },
+                { name: 'Oranžinė', hex: 'orange' },
+                { name: 'Rožinė', hex: 'pink' }
             ];
             
             const randomColor = colors[Math.floor(Math.random() * colors.length)];
@@ -70,58 +80,6 @@
             if (text) {
                 document.getElementById("customText").innerText = text;
             }
-        }
-
-        function toggleVisibility() {
-            const box = document.getElementById("box");
-            box.style.display = box.style.display === 'none' ? 'flex' : 'none';
-        }
-
-        function increaseSize() {
-            const box = document.getElementById("box");
-            box.style.width = "300px";
-            box.style.height = "300px";
-        }
-
-        function decreaseSize() {
-            const box = document.getElementById("box");
-            box.style.width = "100px";
-            box.style.height = "100px";
-        }
-
-        function rotateBox() {
-            const box = document.getElementById("box");
-            box.style.transform = "rotate(45deg)";
-        }
-
-        function resetBox() {
-            const box = document.getElementById("box");
-            box.style.transform = "rotate(0deg)";
-            box.style.width = "200px";
-            box.style.height = "200px";
-        }
-
-        function randomizePosition() {
-            const box = document.getElementById("box");
-            box.style.position = "absolute";
-            box.style.top = Math.random() * (window.innerHeight - 200) + "px";
-            box.style.left = Math.random() * (window.innerWidth - 200) + "px";
-        }
-
-        function changeBorder() {
-            const box = document.getElementById("box");
-            box.style.border = "5px dashed black";
-        }
-
-        function playSound() {
-            const audio = new Audio('https://www.myinstants.com/media/sounds/tf2-hit-sound.mp3');
-            audio.play();
-        }
-
-        function changeFont() {
-            const box = document.getElementById("box");
-            const fonts = ['Arial', 'Courier New', 'Georgia', 'Times New Roman', 'Verdana'];
-            box.style.fontFamily = fonts[Math.floor(Math.random() * fonts.length)];
         }
     </script>
 </body>
