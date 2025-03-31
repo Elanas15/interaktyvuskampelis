@@ -30,14 +30,26 @@
     <button onclick="showTime()">Rodyti laiką</button>
     <button onclick="addText()">Pridėti tekstą</button>
     
-    <div class="box" id="box">Spausk mane!</div>
+    <div class="box" id="box">Lightblue</div>
     <p id="time"></p>
     <p id="customText"></p>
     
     <script>
         function changeColor() {
-            const colors = ['red', 'blue', 'green', 'purple', 'orange', 'pink'];
-            document.getElementById("box").style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            const colors = [
+                { name: 'Red', hex: 'red' },
+                { name: 'Blue', hex: 'blue' },
+                { name: 'Green', hex: 'green' },
+                { name: 'Purple', hex: 'purple' },
+                { name: 'Orange', hex: 'orange' },
+                { name: 'Pink', hex: 'pink' }
+            ];
+            
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            const box = document.getElementById("box");
+            box.style.backgroundColor = randomColor.hex;
+            box.innerText = randomColor.name;
         }
 
         function showTime() {
