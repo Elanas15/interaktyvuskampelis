@@ -7,47 +7,63 @@
     <style>
         body {
             text-align: center;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
-            color: #333;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
         .box {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
             background-color: lightblue;
             margin: 20px auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            cursor: pointer;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 22px;
             font-weight: bold;
-        }
-        button {
-            background-color: #6200ea;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 5px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 15px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
             transition: 0.3s;
         }
+        .box:hover {
+            transform: scale(1.1);
+        }
+        button {
+            background: #ff4081;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin: 10px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
         button:hover {
-            background-color: #3700b3;
+            background: #f50057;
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
-    <h1>Sveiki atvykę į interaktyvų puslapį!</h1>
+    <h1>Interaktyvus puslapis</h1>
     <p>Paspausk mygtukus, kad išbandytum funkcijas:</p>
     
     <button onclick="changeColor()">Keisti spalvą</button>
     <button onclick="showTime()">Rodyti laiką</button>
     <button onclick="addText()">Pridėti tekstą</button>
+    <button onclick="toggleBorder()">Perjungti rėmelį</button>
+    <button onclick="toggleSize()">Perjungti dydį</button>
+    <button onclick="rotateBox()">Pasukti kvadratą</button>
+    <button onclick="resetBox()">Atstatyti kvadratą</button>
     
     <div class="box" id="box">Šviesiai mėlyna</div>
     <p id="time"></p>
@@ -80,6 +96,43 @@
             if (text) {
                 document.getElementById("customText").innerText = text;
             }
+        }
+        
+        function toggleBorder() {
+            const box = document.getElementById("box");
+            if (box.style.border) {
+                box.style.border = "";
+            } else {
+                box.style.border = "5px solid white";
+            }
+        }
+
+        function toggleSize() {
+            const box = document.getElementById("box");
+            if (box.style.width === "220px") {
+                box.style.width = "300px";
+                box.style.height = "300px";
+            } else {
+                box.style.width = "220px";
+                box.style.height = "220px";
+            }
+        }
+
+        function rotateBox() {
+            const box = document.getElementById("box");
+            let currentRotation = box.style.transform.match(/rotate\((\d+)deg\)/);
+            let angle = currentRotation ? parseInt(currentRotation[1]) + 45 : 45;
+            box.style.transform = `rotate(${angle}deg)`;
+        }
+
+        function resetBox() {
+            const box = document.getElementById("box");
+            box.style.backgroundColor = "lightblue";
+            box.innerText = "Šviesiai mėlyna";
+            box.style.border = "";
+            box.style.width = "220px";
+            box.style.height = "220px";
+            box.style.transform = "rotate(0deg)";
         }
     </script>
 </body>
