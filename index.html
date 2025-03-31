@@ -29,6 +29,15 @@
     <button onclick="changeColor()">Keisti spalvą</button>
     <button onclick="showTime()">Rodyti laiką</button>
     <button onclick="addText()">Pridėti tekstą</button>
+    <button onclick="toggleVisibility()">Rodyti/slėpti kvadratą</button>
+    <button onclick="increaseSize()">Didinti kvadratą</button>
+    <button onclick="decreaseSize()">Mažinti kvadratą</button>
+    <button onclick="rotateBox()">Sukti kvadratą</button>
+    <button onclick="resetBox()">Atstatyti kvadratą</button>
+    <button onclick="randomizePosition()">Perkelti kvadratą</button>
+    <button onclick="changeBorder()">Keisti rėmelį</button>
+    <button onclick="playSound()">Garsas</button>
+    <button onclick="changeFont()">Keisti šriftą</button>
     
     <div class="box" id="box">Lightblue</div>
     <p id="time"></p>
@@ -61,6 +70,58 @@
             if (text) {
                 document.getElementById("customText").innerText = text;
             }
+        }
+
+        function toggleVisibility() {
+            const box = document.getElementById("box");
+            box.style.display = box.style.display === 'none' ? 'flex' : 'none';
+        }
+
+        function increaseSize() {
+            const box = document.getElementById("box");
+            box.style.width = "300px";
+            box.style.height = "300px";
+        }
+
+        function decreaseSize() {
+            const box = document.getElementById("box");
+            box.style.width = "100px";
+            box.style.height = "100px";
+        }
+
+        function rotateBox() {
+            const box = document.getElementById("box");
+            box.style.transform = "rotate(45deg)";
+        }
+
+        function resetBox() {
+            const box = document.getElementById("box");
+            box.style.transform = "rotate(0deg)";
+            box.style.width = "200px";
+            box.style.height = "200px";
+        }
+
+        function randomizePosition() {
+            const box = document.getElementById("box");
+            box.style.position = "absolute";
+            box.style.top = Math.random() * (window.innerHeight - 200) + "px";
+            box.style.left = Math.random() * (window.innerWidth - 200) + "px";
+        }
+
+        function changeBorder() {
+            const box = document.getElementById("box");
+            box.style.border = "5px dashed black";
+        }
+
+        function playSound() {
+            const audio = new Audio('https://www.myinstants.com/media/sounds/tf2-hit-sound.mp3');
+            audio.play();
+        }
+
+        function changeFont() {
+            const box = document.getElementById("box");
+            const fonts = ['Arial', 'Courier New', 'Georgia', 'Times New Roman', 'Verdana'];
+            box.style.fontFamily = fonts[Math.floor(Math.random() * fonts.length)];
         }
     </script>
 </body>
